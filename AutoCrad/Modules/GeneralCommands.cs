@@ -342,7 +342,7 @@ namespace DiscordBot.Modules
 
             Thread.Sleep(1000);
             string user = Context.User.Mention;
-            await Context.Channel.SendMessageAsync(user + "*, the dice rolled a " + dice + "*");
+            await Context.Channel.SendMessageAsync(user + "*, the dice rolled a " + dice + "!*");
 
             string method = "Roll";
             ToConsole(method, dice.ToString());
@@ -358,7 +358,7 @@ namespace DiscordBot.Modules
         [Alias("coin")]
         public async Task Flip([Remainder] string userInput = null)
         {
-            await Context.Channel.SendMessageAsync("Flipping a coin... ⚖️");
+            await Context.Channel.SendMessageAsync("*Flipping a coin...* ⚖️");
             string coin = "";
 
             Random rand = new Random();
@@ -368,13 +368,13 @@ namespace DiscordBot.Modules
             Thread.Sleep(1000);
             if (result == 0)
             {
-                await Context.Channel.SendMessageAsync(user + ", it's tails!");
-                coin = "heads";
+                await Context.Channel.SendMessageAsync(user + "*, it's tails!*");
+                coin = "tails";
             }
             else
             {
-                await Context.Channel.SendMessageAsync(user + ", it's heads!");
-                coin = "tails";
+                await Context.Channel.SendMessageAsync(user + "*, it's heads!*");
+                coin = "heads";
             }
 
             string method = "Flip";

@@ -120,7 +120,8 @@ namespace DiscordBot.Modules
             }
 
             var gld = Context.Guild as SocketGuild;
-            
+
+            await Context.Channel.SendMessageAsync(user.Mention + ", this command is still being implemented.. currently does not actually mute the player");
             string title = $"**{user.Username}** was muted for " + time + " minutes";
             string description = $"**User: **{user.Mention}\n**Reason: **{reason}\n**Muted by: **{Context.User.Mention}\n";
             string chooseColor = "red";
