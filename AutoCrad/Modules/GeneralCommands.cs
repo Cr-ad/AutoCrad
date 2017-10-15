@@ -87,12 +87,12 @@ namespace DiscordBot.Modules
         public async Task Joke([Remainder] string userInput = null)
         {
             int numOfJokes = GetNumJokes();
-
+            string user = Context.User.Mention;
             Random rand = new Random();
             int randomJoke = rand.Next(0, (numOfJokes - 1));
 
             string joke = GetJoke(randomJoke);
-            await Context.Channel.SendMessageAsync(joke);
+            await Context.Channel.SendMessageAsync(user + "***, here's your joke*** 🤡 ```css\n" + joke + "\n```");
 
             string input = randomJoke.ToString();
             string method = "Joke";
@@ -192,7 +192,7 @@ namespace DiscordBot.Modules
             }
             
             Random rand = new Random();
-            int value = rand.Next(0, 6);
+            int value = rand.Next(0, 7);
 
             string response = "";
             switch (value)
@@ -201,30 +201,33 @@ namespace DiscordBot.Modules
                     response = "Yeah";
                     break;
                 case 1:
-                    response = "Nah, I don't think so";
+                    response = "100% dude";
                     break;
                 case 2:
                     response = "Probably lol";
                     break;
                 case 3:
-                    response = "100% dude";
+                    response = "lmao, why??";
                     break;
                 case 4:
                     response = "Nope";
                     break;
                 case 5:
-                    response = "lmao, why??";
+                    response = "Nah, I doubt it tbh";
                     break;
                 case 6:
                     response = "Absolutely not";
                     break;
+                //case 7:
+                //    response = "";
+                //    break;
             }
 
             string title = "🎱 Magic 8 Ball 🎱";
             string description = $"**Question:** {userInput}\n**Asked by: **{user}\n**Answer:** {response}";
 
             embedThis(title, description);
-
+              
             string input = userInput;
             string method = "EightBall";
             LogCommand(GetDate(), GetTime(), Context.User.Username, method, input);
@@ -276,6 +279,29 @@ namespace DiscordBot.Modules
             string user = Context.User.Mention;
             embedThis(title, description, chooseColor);
             await Context.Channel.SendMessageAsync(user + " " + link);
+
+            //var inviteEmbed = new EmbedBuilder();
+            //inviteEmbed.WithTitle("👾 AutoCrad Invite 👾");
+            //generalHelp.WithDescription("General:");
+            //generalHelp.AddInlineField("Help", "Shows this command");
+            //generalHelp.AddInlineField("Meme", "Shows a dank meme");
+            //generalHelp.AddInlineField("4chan", "Shows a 4chan post");
+            //generalHelp.AddInlineField("Joke", "Shows a joke");
+            //generalHelp.AddInlineField("8ball (question)", "Ask Magic 8 ball anything");
+            //generalHelp.AddInlineField("Coin", "Flips a coin");
+            //generalHelp.AddInlineField("Dice", "Rolls a dice");
+            //generalHelp.AddInlineField("French", "'Translates' to French");
+            //generalHelp.AddInlineField("Coin", "Flips a coin");
+            //generalHelp.AddInlineField("Wed", "It's Wednesday my dudes");
+            //generalHelp.AddInlineField("City", "England is my city");
+            //generalHelp.AddInlineField("Invite", "Add AutoCrad to a server");
+            //generalHelp.AddInlineField("Suggest", "Suggest a feature for AutoCrad");
+            //generalHelp.WithFooter("Page 1/2");
+
+            //generalHelp.WithThumbnailUrl("https://i.imgur.com/AecH2Ym.jpg");
+            //generalHelp.WithColor(Color.Blue);
+
+
 
             string input = "";
             string method = "Invite";
