@@ -271,37 +271,16 @@ namespace DiscordBot.Modules
         [Command("invite")]
         public async Task Invite([Remainder] string userInput = null)
         {
-            string title = "👾 AutoCrad Invite 👾";
-            string link = "https://discordbots.org/bot/351821932544393218";
-            
-            string description = "";
-            string chooseColor = "gold";
             string user = Context.User.Mention;
-            embedThis(title, description, chooseColor);
-            await Context.Channel.SendMessageAsync(user + " " + link);
 
-            //var inviteEmbed = new EmbedBuilder();
-            //inviteEmbed.WithTitle("👾 AutoCrad Invite 👾");
-            //generalHelp.WithDescription("General:");
-            //generalHelp.AddInlineField("Help", "Shows this command");
-            //generalHelp.AddInlineField("Meme", "Shows a dank meme");
-            //generalHelp.AddInlineField("4chan", "Shows a 4chan post");
-            //generalHelp.AddInlineField("Joke", "Shows a joke");
-            //generalHelp.AddInlineField("8ball (question)", "Ask Magic 8 ball anything");
-            //generalHelp.AddInlineField("Coin", "Flips a coin");
-            //generalHelp.AddInlineField("Dice", "Rolls a dice");
-            //generalHelp.AddInlineField("French", "'Translates' to French");
-            //generalHelp.AddInlineField("Coin", "Flips a coin");
-            //generalHelp.AddInlineField("Wed", "It's Wednesday my dudes");
-            //generalHelp.AddInlineField("City", "England is my city");
-            //generalHelp.AddInlineField("Invite", "Add AutoCrad to a server");
-            //generalHelp.AddInlineField("Suggest", "Suggest a feature for AutoCrad");
-            //generalHelp.WithFooter("Page 1/2");
+            var inviteEmbed = new EmbedBuilder();
+            inviteEmbed.WithTitle("👾 AutoCrad Invite 👾");
+            inviteEmbed.WithDescription("[Invite Link - Discord Bot List](https://discordbots.org/bot/351821932544393218) \n" +
+                "Includes memes, jokes, 4chan, 8ball, admin commands, 'french' translation, dice roll, coin flip and other useless commands");
+            inviteEmbed.WithThumbnailUrl("https://i.imgur.com/AecH2Ym.jpg");
+            inviteEmbed.WithColor(Color.Magenta);
 
-            //generalHelp.WithThumbnailUrl("https://i.imgur.com/AecH2Ym.jpg");
-            //generalHelp.WithColor(Color.Blue);
-
-
+            await Context.Channel.SendMessageAsync("", false, inviteEmbed);
 
             string input = "";
             string method = "Invite";
