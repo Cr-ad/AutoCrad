@@ -109,9 +109,10 @@ namespace DiscordBot.Modules
         [Alias("wednesday")]
         public async Task Wednesday([Remainder] string userInput = null)
         {
-            await Context.Channel.SendMessageAsync("***It is Wednesday,***\n" + "***my dudes***\n");
-            string fileName = string.Concat(Environment.CurrentDirectory, (@"\images\individual\wed.jpg"));
-            await Context.Channel.SendFileAsync(fileName);
+            string source = "https://i.imgur.com/2SRddtz.jpg";
+            string desc = "***It is Wednesday,***\n" + "***my dudes***\n";
+            embedThisImage("Wednesday", desc, source, "gold");
+
             string input = "";
             string method = "Wednesday";
             LogCommand(GetDate(), GetTime(), Context.User.Username, method, input);
@@ -126,10 +127,10 @@ namespace DiscordBot.Modules
         [Command("city")]
         public async Task City([Remainder] string userInput = null)
         {
-            await Context.Channel.SendMessageAsync("**Pochinki is my city**");
-            string fileName = string.Concat(Environment.CurrentDirectory, (@"\images\individual\city.png"));
-            await Context.Channel.SendFileAsync(fileName);
-
+            string source = "https://i.imgur.com/KjTzLTI.png";
+            string desc = "**Pochinki is my city **";
+            embedThisImage("City", desc, source, "gold");
+            
             string input = "";
             string method = "City";
             LogCommand(GetDate(), GetTime(), Context.User.Username, method, input);
@@ -399,6 +400,32 @@ namespace DiscordBot.Modules
             var toEmebed = new EmbedBuilder();
             toEmebed.WithTitle(title);
             toEmebed.WithDescription(description);
+            chooseColor.ToLower();
+            switch (chooseColor)
+            {
+                case "red":
+                    toEmebed.WithColor(Color.DarkRed);
+                    break;
+                case "blue":
+                    toEmebed.WithColor(Color.Blue);
+                    break;
+                case "gold":
+                    toEmebed.WithColor(Color.Gold);
+                    break;
+                default:
+                    toEmebed.WithColor(Color.Green);
+                    break;
+            }
+
+            Context.Channel.SendMessageAsync("", false, toEmebed);
+        }
+
+        public void embedThisImage(string title = null, string description = null, string image = null, string chooseColor = "")
+        {
+            var toEmebed = new EmbedBuilder();
+            toEmebed.WithTitle(title);
+            toEmebed.WithDescription(description);
+            toEmebed.WithImageUrl(image);
             chooseColor.ToLower();
             switch (chooseColor)
             {
