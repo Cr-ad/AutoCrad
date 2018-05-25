@@ -245,22 +245,28 @@ namespace DiscordBot.Modules
         public async Task Translate([Remainder] string userInput = null)
         {
             string user = Context.User.Mention;
-            if (userInput == null)
+            string response = "";
+            if (string.IsNullOrWhiteSpace(userInput))
             {
-                await Context.Channel.SendMessageAsync("**" + user + "** 🇫🇷 The French translation is: '**le you didn't type anything..**' 👌");
+                response = "'**le you didn't type anything..**' 👌";
             }
             else if ((userInput[0] == 'l' && userInput[1] == 'e') && userInput[2] == ' ')
             {
-                await ReplyAsync("**" + user + "**, that's clearly already in French.. 🤔");
+                throw new ArgumentException("**" + user + "**, that's clearly already in French.. 🤔");
             }
             else
             {
-                await Context.Channel.SendMessageAsync("**" + user + "** 🇫🇷 The French translation is: '**le " + userInput + "**'");
+                response = "le " + userInput;
             }
+
+            string title = "🇫🇷 French Translation 🇫🇷";
+            string description = $"**Original:** {userInput}\n**Requested by: **{user}\n**Translation:** {response}";
+
+            embedThis(title, description, "gold");
 
             string input = userInput;
             string method = "Translate";
-            LogCommand(GetDate(), GetTime(), user, method, input);
+            LogCommand(GetDate(), GetTime(), Context.User.Username, method, input);
             ToConsole(method, input);
         }
 
