@@ -99,37 +99,34 @@ namespace DiscordBot.Modules
         /// <param name="time"></param>
         /// <param name="reason"></param>
         /// <returns></returns>
-        [Command("mute")]
-        [RequireUserPermission(GuildPermission.MuteMembers)]
-        [RequireBotPermission(GuildPermission.MuteMembers)]
-        public async Task Mute(SocketGuildUser user = null, int time = -1, [Remainder] string reason = null)
+        [Command("kick")]
+        [RequireUserPermission(GuildPermission.KickMembers)]
+        [RequireBotPermission(GuildPermission.KickMembers)]
+        public async Task Kick(SocketGuildUser user = null, [Remainder] string reason = null)
         {
-            
+            var gld = Context.Guild as SocketGuild;
             if (user == null)
             {
-                throw new ArgumentException(Context.User.Mention + ", please try again\n**Command Usage: **.mute <**player**> <time> <reason>");
-            }
-            else if (time == -1)
-            {
-                throw new ArgumentException(Context.User.Mention + ", please try again\n**Command Usage: **.mute <player> <**time**> <reason>");
+                throw new ArgumentException(Context.User.Mention + ", please try again\n**Command Usage: **.kick <**player**> <reason>");
             }
 
             else if (string.IsNullOrWhiteSpace(reason))
             {
-                throw new ArgumentException(Context.User.Mention + ", please try again\n**Command Usage: **.mute <player> <time> <**reason**>");
+                throw new ArgumentException(Context.User.Mention + ", please try again\n**Command Usage: **.mute <player> <**reason**>");
+            }
+            else
+            {
+                await user.KickAsync(reason);
             }
 
-            var gld = Context.Guild as SocketGuild;
-
-            await Context.Channel.SendMessageAsync(user.Mention + ", this command is still being implemented.. currently does not actually mute the player");
-            string title = $"**{user.Username}** was muted for " + time + " minutes";
-            string description = $"**User: **{user.Mention}\n**Reason: **{reason}\n**Muted by: **{Context.User.Mention}\n";
+            string title = $"**{user.Username}** was kicked from the server";
+            string description = $"**User: **{user.Mention}\n**Reason: **{reason}\n**Kicked by: **{Context.User.Mention}\n";
             string chooseColor = "red";
             embedThis(title, description, chooseColor);
 
-            string input = user.Username + "," + time + "," + reason;
-            string inputForConsole = user.Username + "," + time + "," + @"""" + reason + @"""";
-            string method = "Mute";
+            string input = user.Username + "," + reason;
+            string inputForConsole = user.Username + "," + @"""" + reason + @"""";
+            string method = "Kick";
             LogCommand(GetDate(), GetTime(), Context.User.Username, method, input);
             ToConsole(method, inputForConsole);
         }

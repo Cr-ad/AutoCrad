@@ -51,7 +51,7 @@ namespace DiscordBot.Modules
             adminHelp.WithDescription("Admin:");
             adminHelp.AddInlineField("Clear <x>", "Clears x messages");
             adminHelp.AddInlineField("FindJoke <x>", "Find corresponding joke");
-            adminHelp.AddInlineField("Mute <user>", "Mutes the selected user");
+            adminHelp.AddInlineField("Kick <user>", "Kick the selected user");
             adminHelp.AddInlineField("Ban <user>", "Bans the selected user");
             adminHelp.WithFooter("Page 2/2");
 
