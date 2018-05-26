@@ -35,9 +35,8 @@ _For more examples and usage, please refer to the [Wiki][wiki]._
 
 ## Required Development Setup
 
-Sub directories within each directory are supported to easily categorise different types of images. For example, a different directory for a different source of sub-reddit images
-
-Create the folowing directories before running the bot from your own machine
+* Sub directories within each directory are supported to easily categorise different sources of images. For example, a seperate directory for each source of sub-reddit images
+* Create the folowing directories before running the bot from your own machine
 
 | Directory                | Purpose       |
 | -------------            |:-------------:|
