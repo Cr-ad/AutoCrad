@@ -250,6 +250,10 @@ namespace DiscordBot.Modules
             {
                 response = "'**le you didn't type anything..**' 👌";
             }
+            else if ((userInput[0] == 'l' && userInput[1] == 'e') && userInput.Length == 2)
+            {
+                throw new ArgumentException("**" + user + "**, that's clearly already in French.. 🤔");
+            }
             else if ((userInput[0] == 'l' && userInput[1] == 'e') && userInput[2] == ' ')
             {
                 throw new ArgumentException("**" + user + "**, that's clearly already in French.. 🤔");
