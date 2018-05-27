@@ -36,9 +36,10 @@ _For more examples and usage, please refer to the [Wiki][wiki]._
 ## Required Development Setup
 
 * Sub directories within each directory are supported to easily categorise different sources of images. For example, a seperate directory for each source of sub-reddit images
-* Create the folowing directories before running the bot from your own machine
+* Create the following directories / files before running the bot from your own machine#
+* Should be one joke per line in the jokes.txt file
 
-| Directory          | Purpose       |
+| Directory          | Purpose     |
 | -------------------|-------------|
 | Files/images/4chan/| Where the <b>.4chan</b> command images are located |
 | Files/images/memes/| Where the <b>.meme</b> command images are located  |
