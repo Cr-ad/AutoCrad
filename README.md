@@ -38,11 +38,11 @@ _For more examples and usage, please refer to the [Wiki][wiki]._
 * Sub directories within each directory are supported to easily categorise different sources of images. For example, a seperate directory for each source of sub-reddit images
 * Create the folowing directories before running the bot from your own machine
 
-| Directory                | Purpose       |
-| -------------            |:-------------:|
-| Files/images/4chan/      | Where the <b>.4chan</b> command images are stored |
-| Files/images/memes/      | Where the <b>.meme</b> command images are stored  |
-| Files/jokes.txt          | Where the <b>.joke</b> command jokes are stored   |
+| Directory          | Purpose       |
+| -------------------|-------------|
+| Files/images/4chan/| Where the <b>.4chan</b> command images are located |
+| Files/images/memes/| Where the <b>.meme</b> command images are located  |
+| Files/jokes.txt    | Where the <b>.joke</b> command jokes are located   |
 
 Directory Hierarchy Example:
 
