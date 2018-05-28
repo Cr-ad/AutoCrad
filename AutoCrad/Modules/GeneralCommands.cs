@@ -77,15 +77,18 @@ namespace DiscordBot.Modules
         /// <param name="userInput"></param>
         /// <returns></returns>
         [Command("joke")]
+        [Alias("jk")]
         public async Task Joke([Remainder] string userInput = null)
         {
             int numOfJokes = GetNumJokes();
             string user = Context.User.Mention;
+
             Random rand = new Random();
             int randomJoke = rand.Next(0, (numOfJokes - 1));
-
             string joke = GetJoke(randomJoke);
-            await Context.Channel.SendMessageAsync(user + "***, here's your joke*** 🤡 ```css\n" + joke + "\n```");
+
+            string description = $"**Requested by: **{user}\n**Joke:** {joke}";
+            embedThis("🃏 Joke Command 🃏", description);
 
             string input = randomJoke.ToString();
             string method = "Joke";
@@ -212,9 +215,6 @@ namespace DiscordBot.Modules
                 case 6:
                     response = "Absolutely not";
                     break;
-                //case 7:
-                //    response = "";
-                //    break;
             }
 
             string title = "🎱 Magic 8 Ball 🎱";
